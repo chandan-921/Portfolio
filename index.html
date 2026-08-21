@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#050505" />
+
+  <!-- ============ SEO ============ -->
+  <title>Chandan Gupta — Full Stack Developer</title>
+  <meta name="description" content="Portfolio of Chandan Gupta, a Full Stack Developer creating modern web applications and interactive digital experiences." />
+  <meta name="author" content="Chandan Gupta" />
+  <meta name="keywords" content="Chandan Gupta, Full Stack Developer, Creative Developer, Web Developer, JavaScript, Node.js, MongoDB, Three.js, Portfolio" />
+  <link rel="canonical" href="https://YOUR_DOMAIN/" />
+
+  <!-- ============ Open Graph / Social ============ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Chandan Gupta" />
+  <meta property="og:title" content="Chandan Gupta — Full Stack Developer" />
+  <meta property="og:description" content="Portfolio of Chandan Gupta, a Full Stack Developer creating modern web applications and interactive digital experiences." />
+  <meta property="og:url" content="https://YOUR_DOMAIN/" />
+  <meta property="og:image" content="assets/images/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Chandan Gupta — Full Stack Developer" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chandan Gupta — Full Stack Developer" />
+  <meta name="twitter:description" content="Portfolio of Chandan Gupta, a Full Stack Developer creating modern web applications and interactive digital experiences." />
+  <meta name="twitter:image" content="assets/images/og-cover.png" />
+
+  <!-- ============ Icons ============ -->
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/icons/site.webmanifest" />
+
+  <!-- ============ Fonts ============ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- ============ Icon font (decorative only — every control also has a text label) ============ -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- ============ Styles ============ -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ============ Structured data ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chandan Gupta",
+    "jobTitle": "Full Stack Developer",
+    "description": "Full Stack Developer creating modern web applications and interactive digital experiences.",
+    "url": "https://YOUR_DOMAIN/",
+    "sameAs": ["YOUR_GITHUB_URL", "YOUR_LINKEDIN_URL"]
+  }
+  </script>
+</head>
+
+<body class="is-loading">
+
+  <!-- ================================================================
+       LOADING SCREEN
+  ================================================================= -->
+  <div class="loader" id="loader" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="loader__inner">
+      <div class="loader__mark" id="loader-mark" aria-hidden="true">
+        <span class="loader__mark-text">CG</span>
+        <span class="loader__mark-ring"></span>
+      </div>
+      <div class="loader__meta">
+        <span class="loader__label">Loading experience</span>
+        <span class="loader__percent" id="loader-percent">0%</span>
+      </div>
+      <div class="loader__bar" aria-hidden="true">
+        <span class="loader__bar-fill" id="loader-bar"></span>
+      </div>
+    </div>
+    <div class="loader__curtain" aria-hidden="true"></div>
+  </div>
+
+  <!-- ================================================================
+       SCROLL PROGRESS
+  ================================================================= -->
+  <div class="scroll-progress" id="scroll-progress" role="progressbar" aria-label="Page scroll progress"
+    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <span class="scroll-progress__fill" id="scroll-progress-fill"></span>
+  </div>
+
+  <!-- ================================================================
+       CUSTOM CURSOR (desktop only — created/enabled by JS)
+  ================================================================= -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__ring" id="cursor-ring"><span class="cursor__label" id="cursor-label"></span></div>
+    <div class="cursor__dot" id="cursor-dot"></div>
+  </div>
+
+  <!-- ================================================================
+       AMBIENT BACKGROUND LAYERS (CSS only — cheap depth everywhere)
+  ================================================================= -->
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__grid"></div>
+    <div class="ambient__glow ambient__glow--a"></div>
+    <div class="ambient__glow ambient__glow--b"></div>
+    <div class="ambient__glow ambient__glow--c"></div>
+    <div class="ambient__rays"></div>
+    <div class="ambient__grain"></div>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================================================================
+       NAVBAR
+  ================================================================= -->
+  <header class="nav" id="navbar">
+    <div class="nav__inner">
+      <a class="nav__logo" id="logo" href="#home" aria-label="Chandan Gupta — home" data-cursor="pointer">
+        <span class="nav__logo-text" data-config="initialsDot">CG.</span>
+        <span class="nav__logo-glow" aria-hidden="true"></span>
+      </a>
+
+      <nav class="nav__links" id="nav-menu" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a class="nav-link is-active" href="#home" data-section="home" data-cursor="pointer"><span>Home</span></a></li>
+          <li><a class="nav-link" href="#about" data-section="about" data-cursor="pointer"><span>About</span></a></li>
+          <li><a class="nav-link" href="#skills" data-section="skills" data-cursor="pointer"><span>Skills</span></a></li>
+          <li><a class="nav-link" href="#projects" data-section="projects" data-cursor="pointer"><span>Projects</span></a></li>
+          <li><a class="nav-link" href="#experience" data-section="experience" data-cursor="pointer"><span>Experience</span></a></li>
+          <li><a class="nav-link" href="#contact" data-section="contact" data-cursor="pointer"><span>Contact</span></a></li>
+        </ul>
+        <div class="nav__mobile-foot">
+          <span class="nav__mobile-label">Get in touch</span>
+          <a class="nav__mobile-mail" data-link="email" href="#contact" data-cursor="pointer">
+            <span data-config="email">YOUR_EMAIL</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--ghost btn--sm nav__cta" href="#contact" data-cursor="pointer">
+          <span>Let's talk</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+        </a>
+        <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+          aria-controls="nav-menu" data-cursor="pointer">
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================================================================
+         HERO
+    ================================================================= -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <div class="container hero__container">
+        <div class="hero__content">
+          <p class="hero__eyebrow" data-reveal="fade-up">
+            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+            <span data-config="availability">AVAILABLE FOR CREATIVE &amp; DEVELOPMENT PROJECTS</span>
+          </p>
+
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__greeting" data-split="chars" data-config="greeting">Hi, I'm Chandan.</span>
+            <span class="hero__role" aria-label="Full Stack Developer">
+              <span class="hero__role-inner" id="role-rotator" data-rotator>
+                <span class="hero__role-text is-active">FULL STACK DEVELOPER</span>
+              </span>
+            </span>
+          </h1>
+
+          <p class="hero__lead" data-reveal="fade-up" data-config="heroTagline">
+            I create digital experiences where code meets creativity.
+          </p>
+
+          <div class="hero__actions" data-reveal="fade-up">
+            <a class="btn btn--primary" href="#projects" data-cursor="pointer">
+              <span>View My Work</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+            </a>
+            <a class="btn btn--outline" href="#contact" data-cursor="pointer">
+              <span>Let's Connect</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" /></svg>
+            </a>
+          </div>
+
+          <ul class="hero__meta" data-reveal="fade-up">
+            <li><span class="hero__meta-key">Focus</span><span class="hero__meta-val" data-config="focus">Web &amp; Product Engineering</span></li>
+            <li><span class="hero__meta-key">Based in</span><span class="hero__meta-val" data-config="location">YOUR_LOCATION</span></li>
+            <li><span class="hero__meta-key">Stack</span><span class="hero__meta-val" data-config="stackShort">JS · Node · Mongo</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#about" aria-label="Scroll to about section" data-cursor="pointer">
+        <span class="hero__scroll-text">SCROLL TO EXPLORE</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ================================================================
+         MARQUEE
+    ================================================================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marquee-track"></div>
+      <div class="marquee__fade marquee__fade--l"></div>
+      <div class="marquee__fade marquee__fade--r"></div>
+    </div>
+
+    <!-- ================================================================
+         ABOUT
+    ================================================================= -->
+    <section class="section section--about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow"><span class="section__index">01</span><span class="section__rule" aria-hidden="true"></span>About</p>
+          <h2 class="section__title" id="about-title" data-split="words">More Than Just Code.</h2>
+        </header>
+
+        <div class="about__grid">
+          <div class="about__copy">
+            <p class="about__lead" data-reveal="fade-up" data-config="intro">
+              I build modern web experiences, interactive applications, and creative digital products that
+              combine clean engineering with immersive design.
+            </p>
+            <p class="about__text" data-reveal="fade-up">
+              I care about the details most people never notice — the easing on a transition, the shape of an
+              API, the moment a page stops feeling like a document and starts feeling like a product. My goal is
+              simple: build things that are genuinely useful, quietly modern, and visually impressive without
+              getting in the user's way.
+            </p>
+            <p class="about__text" data-reveal="fade-up">
+              I move comfortably between the browser and the server — designing interfaces, wiring up APIs,
+              modelling data, and shipping the whole thing end to end. When I am not building, I am usually
+              taking something apart to understand why it works.
+            </p>
+
+            <ul class="about__stats" id="stats-grid" data-reveal="stagger"></ul>
+          </div>
+
+          <aside class="about__card-wrap" aria-label="What I bring">
+            <article class="traits-card glass" data-tilt data-tilt-max="9">
+              <div class="traits-card__sheen" aria-hidden="true"></div>
+              <header class="traits-card__head">
+                <span class="traits-card__badge">Profile</span>
+                <h3 class="traits-card__title" data-config="name">Chandan Gupta</h3>
+                <p class="traits-card__role" data-config="role">Full Stack Developer &amp; Creative Developer</p>
+              </header>
+              <ul class="traits-card__list" id="traits-list"></ul>
+              <footer class="traits-card__foot">
+                <span class="traits-card__status"><span class="dot-pulse" aria-hidden="true"></span>Open to new projects</span>
+                <a class="traits-card__link"  href="assets/Resume.pdf" data-cursor="pointer">
+                  <span>Résumé</span>
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              </footer>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SKILLS
+    ================================================================= -->
+    <section class="section section--skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section__head section__head--split">
+          <div>
+            <p class="section__eyebrow"><span class="section__index">02</span><span class="section__rule" aria-hidden="true"></span>Skills</p>
+            <h2 class="section__title" id="skills-title" data-split="words">The Toolkit.</h2>
+          </div>
+          <p class="section__lead" data-reveal="fade-up">
+            A stack I actually use — chosen for how well it ships, not how well it sounds.
+          </p>
+        </header>
+
+        <div class="skills__grid" id="skills-grid" data-reveal="stagger"></div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         PROJECTS
+    ================================================================= -->
+    <section class="section section--projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section__head section__head--split">
+          <div>
+            <p class="section__eyebrow"><span class="section__index">03</span><span class="section__rule" aria-hidden="true"></span>Projects</p>
+            <h2 class="section__title" id="projects-title" data-split="words">Selected Work.</h2>
+          </div>
+          <p class="section__lead" data-reveal="fade-up">
+            A few things I have designed and built. Open any card for the full breakdown.
+          </p>
+        </header>
+
+        <div class="projects__grid" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         EXPERIENCE / JOURNEY
+    ================================================================= -->
+    <section class="section section--journey" id="experience" aria-labelledby="journey-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="section__eyebrow"><span class="section__index">04</span><span class="section__rule" aria-hidden="true"></span>Experience</p>
+          <h2 class="section__title" id="journey-title" data-split="words">My Journey.</h2>
+        </header>
+
+        <div class="timeline" id="timeline">
+          <span class="timeline__line" aria-hidden="true"><i class="timeline__line-fill" id="timeline-progress"></i></span>
+          <ol class="timeline__list" id="timeline-list"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SERVICES
+    ================================================================= -->
+    <section class="section section--services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section__head section__head--split">
+          <div>
+            <p class="section__eyebrow"><span class="section__index">05</span><span class="section__rule" aria-hidden="true"></span>Services</p>
+            <h2 class="section__title" id="services-title" data-split="words">How I Can Help.</h2>
+          </div>
+          <p class="section__lead" data-reveal="fade-up">
+            From a single interface to a full product — design, build, and everything wired in between.
+          </p>
+        </header>
+
+        <div class="services__grid" id="services-grid" data-reveal="stagger"></div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CONTACT
+    ================================================================= -->
+    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+      <canvas class="contact__canvas" id="contact-canvas" aria-hidden="true"></canvas>
+      <div class="contact__veil" aria-hidden="true"></div>
+
+      <div class="container contact__container">
+        <p class="section__eyebrow section__eyebrow--center"><span class="section__index">06</span><span class="section__rule" aria-hidden="true"></span>Contact</p>
+        <h2 class="contact__title" id="contact-title" data-split="chars">Let's Build Something.</h2>
+        <p class="contact__lead" data-reveal="fade-up">
+          Have an idea, project, or opportunity? Let's turn it into something real.
+        </p>
+
+        <div class="contact__links" id="contact-links" data-reveal="stagger"></div>
+
+        <p class="contact__note" data-reveal="fade-up">
+          Prefer email? <a class="link-underline" data-link="email" href="#contact" data-cursor="pointer"><span data-config="email">YOUR_EMAIL</span></a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================================
+       FOOTER
+  ================================================================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="footer__logo" href="#home" aria-label="Back to top" data-cursor="pointer" data-config="initials">CG</a>
+        <p class="footer__tagline">Designed &amp; Built by <span data-config="name">Chandan Gupta</span></p>
+        <p class="footer__built">Three.js · GSAP · Vanilla JavaScript</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <span class="footer__col-title">Navigate</span>
+        <ul id="footer-nav"></ul>
+      </nav>
+
+      <div class="footer__social">
+        <span class="footer__col-title">Elsewhere</span>
+        <ul id="footer-social"></ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p class="footer__copy">&copy; <span id="year">2026</span> <span data-config="name">Chandan Gupta</span>. All rights reserved.</p>
+      <p class="footer__hint"><span class="footer__hint-key">Tip</span> tap the logo a few times.</p>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       PROJECT MODAL
+  ================================================================= -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true" hidden>
+    <div class="modal__backdrop" id="modal-backdrop" data-cursor="close"></div>
+    <div class="modal__panel glass" id="modal-panel" role="document">
+      <button class="modal__close" id="modal-close" type="button" aria-label="Close project details" data-cursor="pointer">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+      <div class="modal__scroll" id="modal-body" tabindex="-1"></div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       EASTER EGG OVERLAY
+  ================================================================= -->
+  <div class="egg" id="easter-egg" aria-hidden="true">
+    <div class="egg__grid"></div>
+    <div class="egg__core"><span>SYSTEM ONLINE</span></div>
+  </div>
+
+  <!-- ================================================================
+       TOASTS (used for unconfigured placeholder links)
+  ================================================================= -->
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <style>
+      /* Without JS nothing can animate elements in, so show everything immediately. */
+      [data-reveal], [data-split], .project-card, .skill-card, .service-card { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .loader { display: none !important; }
+      body { overflow: auto !important; }
+    </style>
+    <div class="noscript">
+      <p><strong>JavaScript is disabled.</strong> This portfolio uses JavaScript for its 3D scenes and
+        content rendering. Please enable JavaScript, or reach me directly at the address in the page source.</p>
+    </div>
+  </noscript>
+
+  <!-- ================================================================
+       LIBRARIES (classic builds so the site also works from file://)
+  ================================================================= -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- ================================================================
+       APP (deferred: guaranteed order, runs before DOMContentLoaded)
+  ================================================================= -->
+  <script defer src="js/main.js"></script>
+  <script defer src="js/three-scene.js"></script>
+  <script defer src="js/animations.js"></script>
+</body>
+</html>
