@@ -304,7 +304,7 @@ const portfolioConfig = {
          "https://chandan-chat.onrender.com".
        • If the site and the server share an origin, use "" (empty string). */
   chat: {
-    serverUrl: "YOUR_CHAT_SERVER_URL",
+    serverUrl: "https://portfolio-chat-server-jlbd.onrender.com",
 
     /* Panel copy */
     title: "Chat with Chandan",
