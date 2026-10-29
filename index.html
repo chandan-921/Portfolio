@@ -144,10 +144,14 @@
       </nav>
 
       <div class="nav__actions">
-        <a class="btn btn--ghost btn--sm nav__cta" href="#contact" data-cursor="pointer">
+        <button class="btn btn--ghost btn--sm nav__cta" id="chat-open" type="button" data-cursor="pointer"
+          aria-haspopup="dialog" aria-expanded="false" aria-controls="chat-panel">
           <span>Let's talk</span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
-        </a>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.6 9.6 0 0 1-2.9-.5L4 21l1.6-4.2A8.2 8.2 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3H13a8.4 8.4 0 0 1 8 8z" />
+          </svg>
+          <span class="nav__cta-badge" id="chat-badge" hidden aria-hidden="true">0</span>
+        </button>
         <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"
           aria-controls="nav-menu" data-cursor="pointer">
           <span class="nav__toggle-bar"></span>
@@ -420,6 +424,132 @@
   </div>
 
   <!-- ================================================================
+       LIVE CHAT PANEL
+       Driven by js/chat.js. Everything inside starts hidden; the widget
+       reveals exactly one .chat__view at a time.
+  ================================================================= -->
+  <div class="chat" id="chat" hidden>
+    <div class="chat__backdrop" id="chat-backdrop" data-cursor="close"></div>
+
+    <section class="chat__panel glass" id="chat-panel" role="dialog" aria-modal="true"
+      aria-labelledby="chat-title" tabindex="-1">
+
+      <header class="chat__top">
+        <div class="chat__who">
+          <span class="chat__avatar" aria-hidden="true">
+            <span class="chat__avatar-text" id="chat-avatar">CG</span>
+            <span class="chat__dot" id="chat-dot"></span>
+          </span>
+          <span class="chat__meta">
+            <h2 class="chat__title" id="chat-title">Chat with Chandan</h2>
+            <p class="chat__sub" id="chat-sub">Usually replies within a few hours</p>
+          </span>
+        </div>
+        <button class="chat__close" id="chat-close" type="button" aria-label="Close chat" data-cursor="pointer">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+      </header>
+
+      <!-- ---- View 1: name capture ---- -->
+      <div class="chat__view chat__view--intro" id="chat-intro">
+        <p class="chat__blurb" id="chat-blurb"></p>
+
+        <form class="chat__form" id="chat-form" novalidate>
+          <label class="chat__field">
+            <span class="chat__label">Your name</span>
+            <input class="chat__input" id="chat-name" name="name" type="text" required maxlength="60"
+              autocomplete="name" spellcheck="false" placeholder="What should I call you?" />
+          </label>
+
+          <label class="chat__field" id="chat-email-field">
+            <span class="chat__label">
+              Email <span class="chat__optional">optional</span>
+            </span>
+            <input class="chat__input" id="chat-email" name="email" type="email" maxlength="160"
+              autocomplete="email" spellcheck="false" placeholder="you@example.com" />
+            <span class="chat__hint" id="chat-email-note"></span>
+          </label>
+
+          <label class="chat__field">
+            <span class="chat__label">
+              Message <span class="chat__optional">optional</span>
+            </span>
+            <textarea class="chat__input chat__input--area" id="chat-first" name="message" rows="3"
+              maxlength="2000" placeholder="What are you working on?"></textarea>
+          </label>
+
+          <p class="chat__error" id="chat-form-error" role="alert" hidden></p>
+
+          <button class="btn btn--primary chat__submit" id="chat-start" type="submit" data-cursor="pointer">
+            <span id="chat-start-label">Start chatting</span>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+          </button>
+
+          <p class="chat__privacy" id="chat-privacy"></p>
+        </form>
+      </div>
+
+      <!-- ---- View 2: the conversation ---- -->
+      <div class="chat__view chat__view--thread" id="chat-thread" hidden>
+        <p class="chat__banner" id="chat-banner" role="status" hidden></p>
+
+        <div class="chat__scroll" id="chat-scroll" tabindex="0" role="log" aria-live="polite"
+          aria-label="Conversation history">
+          <div class="chat__msgs" id="chat-msgs"></div>
+
+          <div class="chat__typing" id="chat-typing" hidden>
+            <span class="chat__typing-av" id="chat-typing-av" aria-hidden="true">CG</span>
+            <span class="chat__typing-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="sr-only" id="chat-typing-sr">Chandan is typing</span>
+          </div>
+        </div>
+
+        <button class="chat__jump" id="chat-jump" type="button" hidden data-cursor="pointer">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 13l6 6 6-6" /></svg>
+          <span id="chat-jump-label">New message</span>
+        </button>
+
+        <form class="chat__composer" id="chat-composer">
+          <textarea class="chat__composer-input" id="chat-input" rows="1" maxlength="2000"
+            placeholder="Write a message…" aria-label="Write a message"></textarea>
+          <span class="chat__counter" id="chat-counter" aria-live="polite"></span>
+          <button class="chat__send" id="chat-send" type="submit" disabled aria-label="Send message"
+            data-cursor="pointer">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" /></svg>
+          </button>
+        </form>
+
+        <p class="chat__foot">
+          <span class="chat__foot-note" id="chat-foot-note"></span>
+          <button class="chat__reset" id="chat-reset" type="button" data-cursor="pointer">Start over</button>
+        </p>
+      </div>
+
+      <!-- ---- View 3: server unreachable or not configured ---- -->
+      <div class="chat__view chat__view--offline" id="chat-offline" hidden>
+        <span class="chat__offline-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 4l16 16M8.5 3.5A9 9 0 0 1 21 11.5a8.4 8.4 0 0 1-1.2 4.3M6.2 6.3A8.4 8.4 0 0 0 4 11.5c0 1.9.6 3.6 1.6 5L4 21l5.1-1.4a9.6 9.6 0 0 0 2.9.5 8.8 8.8 0 0 0 4.6-1.3" /></svg>
+        </span>
+        <h3 class="chat__offline-title" id="chat-offline-title">Chat is offline</h3>
+        <p class="chat__offline-text" id="chat-offline-text"></p>
+        <a class="btn btn--primary chat__offline-btn" id="chat-offline-mail" data-link="email" href="#contact"
+          data-cursor="pointer">
+          <span>Email me instead</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+        </a>
+        <button class="chat__retry" id="chat-retry" type="button" data-cursor="pointer">Try again</button>
+      </div>
+
+      <!-- ---- View 4: brief connecting state ---- -->
+      <div class="chat__view chat__view--load" id="chat-loading" hidden>
+        <span class="chat__spinner" aria-hidden="true"></span>
+        <p class="chat__loading-text">Connecting…</p>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ================================================================
        TOASTS (used for unconfigured placeholder links)
   ================================================================= -->
   <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
@@ -450,5 +580,6 @@
   <script defer src="js/main.js"></script>
   <script defer src="js/three-scene.js"></script>
   <script defer src="js/animations.js"></script>
+  <script defer src="js/chat.js"></script>
 </body>
 </html>

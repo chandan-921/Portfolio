@@ -290,6 +290,39 @@ const portfolioConfig = {
     { label: "Contact", href: "#contact" }
   ],
 
+  /* ---------- Live chat ----------
+     The "Let's talk" button in the navbar opens a chat panel. It needs the
+     small Node server in the `server/` folder of this project — see
+     server/README.md for the five-minute setup.
+
+     serverUrl: the origin your chat server runs on, with no trailing slash.
+       • Leave it as YOUR_CHAT_SERVER_URL and the panel still opens, but it
+         shows an "email me instead" card rather than a broken chat.
+       • On localhost the widget auto-detects a server on port 8787, so you
+         can develop without editing this at all.
+       • In production use the https:// URL of your deployed server, e.g.
+         "https://chandan-chat.onrender.com".
+       • If the site and the server share an origin, use "" (empty string). */
+  chat: {
+    serverUrl: "YOUR_CHAT_SERVER_URL",
+
+    /* Panel copy */
+    title: "Chat with Chandan",
+    subtitle: "Usually replies within a few hours",
+    intro: "Tell me your name and what you're working on — I'll get back to you here.",
+    askEmail: true,               // show the optional email field on the intro form
+    emailNote: "Optional — so I can reply by email if you close the tab.",
+    placeholder: "Write a message…",
+    startLabel: "Start chatting",
+
+    /* Shown when the server is unreachable or not configured yet */
+    offlineTitle: "Chat is offline",
+    offlineText: "The live chat isn't running right now. Email is the fastest way to reach me.",
+
+    /* Small print under the intro form. Set to "" to hide it. */
+    privacy: "No account needed. Your name and messages are only visible to me."
+  },
+
   /* ---------- Tuning ---------- */
   options: {
     rotateInterval: 2800,       // ms between hero role changes
@@ -1523,6 +1556,16 @@ window.portfolioConfig = portfolioConfig;
     initModal();
     initScrollProgress();
     initEasterEgg();
+
+    /* Live chat (chat.js). It only wires up the panel here — no network
+       request is made until the visitor actually opens it. */
+    if (window.Portfolio.chat && typeof window.Portfolio.chat.init === "function") {
+      try {
+        window.Portfolio.chat.init();
+      } catch (err) {
+        if (window.console && console.warn) console.warn("[portfolio] chat disabled:", err);
+      }
+    }
 
     /* 3D scenes (three-scene.js) */
     var allow3D = hasThree && OPT.enable3D !== false &&

@@ -1,0 +1,31 @@
+# Render Blueprint — deploys the chat server as a long-running Node process.
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: chandan-chat-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false            # set in dashboard (secret)
+      - key: SESSION_SECRET
+        sync: false            # set in dashboard (secret): openssl rand -hex 32
+      - key: ALLOWED_ORIGINS
+        sync: false            # set in dashboard: https://your-portfolio-site.example
+      - key: TRUST_PROXY
+        value: "true"
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: SERVE_SITE
+        value: "false"
+      # Optional persistent storage (recommended on free tier — disk is ephemeral):
+
+      # - key: MONGODB_URI
+      #   sync: false
+      # - key: MONGODB_DB
+      #   value: portfolio_chat
